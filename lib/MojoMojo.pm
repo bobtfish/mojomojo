@@ -1,6 +1,7 @@
 package MojoMojo;
 
-use strict;
+use Moose
+use namespace::autoclean;
 use Path::Class 'file';
 
 use Catalyst qw/
@@ -15,7 +16,10 @@ use Catalyst qw/
     Unicode
     I18N
     Setenv
+   +CatalystX::SimpleLogin
     /;
+
+extends 'Catalyst';
 
 use Storable;
 use Digest::MD5;
@@ -31,6 +35,8 @@ use Module::Pluggable::Ordered
     require     => 1;
 
 our $VERSION = '0.999042';
+
+# CX::SimpleLogin stuff goes here
 
 MojoMojo->config->{authentication}{dbic} = {
     user_class     => 'DBIC::Person',
