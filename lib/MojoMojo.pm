@@ -1,6 +1,6 @@
 package MojoMojo;
 
-use Moose
+use Moose;
 use namespace::autoclean;
 use Path::Class 'file';
 
@@ -69,7 +69,14 @@ __PACKAGE__->config( authentication => {
                 user_class => 'DBIC::Person',
             },
         },
-    }
+      }
+},
+'Controller::Login' => {
+      traits=> [
+          "Logout",
+          "WithRedirect",
+          "RenderAsTTTemplate" 
+      ] 
 });
 
 __PACKAGE__->config('Controller::HTML::FormFu' => {
