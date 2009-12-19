@@ -32,6 +32,7 @@ requires(
     'Catalyst::View::TT'                           => '0.23',
     'Catalyst::View::JSON'                         => '0.26',
     'Catalyst::View::Email::Template'              => 0,
+    'CatalystX::SimpleLogin'                       => '0.07',
     'Config::General'                              => 0,
     'Config::JFDI'                                 => 0,
     'Crypt::CBC'                                   => '2.12',    # FormFu
@@ -60,6 +61,7 @@ requires(
     'KinoSearch'                                   => '0.165',
     'Module::Pluggable::Ordered'                   => '1.4',
     'Moose'                                        => 0,
+    'namespace::clean'                             => 0,
     'Number::Format'                               => 0,
     'parent'                                       => 0,
     'Template'                                     => '2.20',

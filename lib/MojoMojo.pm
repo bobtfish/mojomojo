@@ -1,7 +1,7 @@
 package MojoMojo;
 
 use Moose;
-use namespace::autoclean;
+use namespace::clean -except => [qw/ meta call_plugins plugins_ordered /];
 use Path::Class 'file';
 
 use Catalyst qw/
