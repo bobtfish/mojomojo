@@ -32,20 +32,17 @@ use Module::Pluggable::Ordered
 
 our $VERSION = '0.999042';
 
-MojoMojo->config->{authentication}{dbic} = {
-    user_class     => 'DBIC::Person',
-    user_field     => 'login',
-    password_field => 'pass'
-};
-MojoMojo->config->{default_view}='TT';
-MojoMojo->config->{'Plugin::Cache'}{backend} = {
-    class => "Cache::FastMmap",
-    unlink_on_exit => 1,
-    share_file => '' . Path::Class::file(
-        File::Spec->tmpdir,
-        'mojomojo-sharefile-'.Digest::MD5::md5_hex(MojoMojo->config->{home})
-    ),
-};
+__PACKAGE__->config(default_view => 'TT');
+__PACKAGE__->config('Plugin::Cache' => {
+    backend => {
+        class => "Cache::FastMmap",
+        unlink_on_exit => 1,
+        share_file => '' . Path::Class::file(
+            File::Spec->tmpdir,
+            'mojomojo-sharefile-'.Digest::MD5::md5_hex(MojoMojo->config->{home})
+        ),
+    }
+});
 
 __PACKAGE__->config( authentication => {
     default_realm => 'members',
@@ -71,7 +68,7 @@ __PACKAGE__->config('Controller::HTML::FormFu' => {
     localize_from_context  => 1,
 });
 
-MojoMojo->setup();
+__PACKAGE__->setup();
 
 # Check for deployed database
 my $has_DB = 1;
