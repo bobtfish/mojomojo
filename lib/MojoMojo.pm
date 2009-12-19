@@ -70,13 +70,6 @@ __PACKAGE__->config( authentication => {
             },
         },
       }
-},
-'Controller::Login' => {
-      traits=> [
-          "Logout",
-          "WithRedirect",
-          "RenderAsTTTemplate" 
-      ] 
 });
 
 __PACKAGE__->config('Controller::HTML::FormFu' => {
